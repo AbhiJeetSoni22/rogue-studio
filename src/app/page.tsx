@@ -3,6 +3,7 @@ import Hero from "@/components/hero/Hero";
 import WorkSection from "@/components/work/WorkSection";
 import AboutSection from "@/components/about/AboutSection";
 import CultureSection from "@/components/culture/CultureSection";
+import Footer from "@/components/footer/Footer";
 export default function Home() {
   return (
     <>
@@ -13,6 +14,7 @@ export default function Home() {
         <AboutSection />
         <CultureSection />
       </main>
+      <Footer />
     </>
   );
 }

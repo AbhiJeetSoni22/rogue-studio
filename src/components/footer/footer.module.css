@@ -1,0 +1,666 @@
+/* ==========================================================================
+   FOOTER — "Our Projects" CTA + subscribe + social/copyright
+
+   Reverse-engineered directly from style.min.css (.footer__* rules),
+   reusing this project's existing rem-scaling system, color tokens and
+   font stacks (see globals.css). Class names are local/renamed to fit
+   this project's CSS Module convention rather than copying the original
+   BEM names verbatim.
+   ========================================================================== */
+
+.footer {
+  position: relative;
+  z-index: 0;
+  color: var(--white);
+  background: var(--black);
+  padding-bottom: 2rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .footer {
+    padding: 0 2.5rem 3rem;
+  }
+}
+
+.inner {
+  position: relative;
+}
+
+/* -------------------------------------------------------------------------
+   Heading block — "let's make something / OUR Projects" + badge
+   ------------------------------------------------------------------------- */
+
+.content {
+  position: relative;
+  margin: 30rem 7.9rem 0 6.9rem;
+  /* Text itself isn't interactive; only the heading link below opts back in. */
+  pointer-events: none;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .content {
+    position: static;
+    margin: 10rem 0 35rem;
+    padding: 0 0.4rem;
+  }
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-neue-mon);
+  font-size: 1rem;
+  line-height: 160%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.eyebrowStar {
+  height: 2.4rem;
+  width: 2.4rem;
+  vertical-align: middle;
+  margin-right: 1rem;
+  display: inline-block;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .eyebrowStar {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.8rem;
+  }
+}
+
+.headingWrap {
+  margin-top: 3rem;
+}
+
+.heading {
+  display: inline-block;
+  pointer-events: auto;
+  font-family: var(--font-neue-mon);
+  font-weight: 300;
+  font-size: 13rem;
+  line-height: 0.85;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .heading {
+    font-size: 5rem;
+    line-height: 1;
+    margin-top: 3rem;
+  }
+}
+
+.headingLine {
+  display: block;
+  overflow: hidden;
+}
+
+/* "Projects" — swear-display-cilati cursive/italic override, matching the
+   reference's .hc-cilati treatment (cancels the heading's uppercase). */
+.cilati {
+  display: inline-block;
+  font-family: var(--font-swear-cilati);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 0.83;
+  text-transform: none;
+  color: var(--white);
+  position: relative;
+}
+
+.cilati::after {
+  content: "";
+  position: absolute;
+  left: -0.1em;
+  bottom: -0.05em;
+  width: 100%;
+  height: 1px;
+  background: var(--hero-cream);
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 150ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@media (hover: hover) {
+  .heading:hover .cilati::after {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform 150ms cubic-bezier(0.155, 0.055, 0.14, 1);
+  }
+}
+
+.badge {
+  position: absolute;
+  left: 29rem;
+  top: 2.5rem;
+  height: 8.4rem;
+  transform: rotate(20deg);
+  pointer-events: none;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .badge {
+    height: 5.5rem;
+    left: 14.3rem;
+    top: 4rem;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   CTA — "Say Hello / hello@rogue.studio / Start A Project"
+   ------------------------------------------------------------------------- */
+
+.cta {
+  position: relative;
+  margin: 6rem 7.9rem 14rem 6.9rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  /*
+   * The reference absolutely-positions the CTA on top of the fanned
+   * photos on mobile (top:50.1rem; right:5.3rem). That depends on exact
+   * coordination with .images' mobile offset that isn't practical to
+   * verify without a live render, so this keeps the CTA in normal flow
+   * beneath the heading instead — same content, simpler/safer mobile
+   * composition.
+   */
+  .cta {
+    margin: 3rem 0 0;
+  }
+}
+
+.sayHello {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: var(--font-neue-mon);
+  font-size: 1rem;
+  line-height: 160%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.email {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-neue-mon);
+  font-size: 1.6rem;
+  line-height: 2;
+  letter-spacing: 0.05em;
+}
+
+.email::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.1em;
+  width: 100%;
+  height: 1px;
+  background: var(--white);
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 150ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@media (hover: hover) {
+  .email:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform 150ms cubic-bezier(0.155, 0.055, 0.14, 1);
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .email {
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* "Start A Project" pill button */
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 4.6rem;
+  border-radius: 2.3rem;
+  padding: 0 2.2rem 0 3.4rem;
+  margin-left: 5.7rem;
+  background: var(--white);
+  overflow: hidden;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .button {
+    height: 3.5rem;
+    padding: 0 1.9rem 0 3.2rem;
+    margin-left: 0;
+  }
+}
+
+.buttonDot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 1.3rem;
+  margin-right: 1rem;
+  background: var(--hero-cream);
+  transition: transform 250ms cubic-bezier(0.155, 0.055, 0.14, 1);
+}
+
+.buttonLabel {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-neue-mon);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--black);
+  transition: transform 150ms cubic-bezier(0.155, 0.055, 0.14, 1);
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .buttonLabel {
+    font-size: 1.3rem;
+  }
+}
+
+@media (hover: hover) {
+  .button:hover .buttonLabel {
+    transform: translateX(1rem);
+  }
+
+  .button:hover .buttonDot {
+    transform: translateX(-0.3rem) scale(1.15);
+    background: #ff7a00;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Fanned photos
+   ------------------------------------------------------------------------- */
+
+.images {
+  position: absolute;
+  top: 0;
+  right: 47rem;
+  width: 0;
+  height: 48rem;
+  pointer-events: none;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .images {
+    position: relative;
+    top: auto;
+    right: 50%;
+    width: 0;
+    height: 26.6rem;
+    margin-top: 4rem;
+  }
+}
+
+.imageWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38.8rem;
+  height: 48rem;
+  transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  display: block;
+}
+
+.imageWrap:nth-child(1) {
+  transform: translate3d(-50%, 0, 0) scale(0.7) translateX(-32rem) translateY(5rem) rotate(-20deg);
+}
+
+.imageWrap:nth-child(2) {
+  transform: translate3d(-50%, 0, 0) scale(0.7) translateX(32rem) translateY(5rem) rotate(20deg);
+}
+
+.imageWrap:nth-child(3) {
+  transform: translate3d(-50%, 0, 0);
+}
+
+/* Hovering the heading area fans the photos out slightly further —
+   matches the reference's `.footer__content:hover ~ .footer__images` rule. */
+@media (hover: hover) {
+  .content:hover ~ .images .imageWrap {
+    transition: transform 0.7s cubic-bezier(0.425, 0.035, 0, 1);
+  }
+
+  .content:hover ~ .images .imageWrap:nth-child(1) {
+    transform: translate3d(-50%, 0, 0) scale(0.7) translateX(-34rem) translateY(6rem) rotate(-25deg);
+  }
+
+  .content:hover ~ .images .imageWrap:nth-child(2) {
+    transform: translate3d(-50%, 0, 0) scale(0.7) translateX(34rem) translateY(6rem) rotate(25deg);
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .imageWrap {
+    width: 21.4rem;
+    height: 26.6rem;
+  }
+
+  .imageWrap img {
+    border-radius: 0.5rem;
+  }
+
+  .imageWrap:nth-child(1) {
+    transform: translate3d(-50%, 0, 0) scale(0.57) translateX(-17.5rem) translateY(1rem) rotate(-20deg);
+  }
+
+  .imageWrap:nth-child(2) {
+    transform: translate3d(-50%, 0, 0) scale(0.57) translateX(17.5rem) translateY(1rem) rotate(20deg);
+  }
+
+  .imageWrap:nth-child(3) {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Bottom row — nav links (left) + subscribe form (right)
+   ------------------------------------------------------------------------- */
+
+.bottom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10rem 0 5rem;
+  padding: 0 17.9rem 0 6rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 24rem;
+    margin: 0 0 -1rem;
+    padding: 0;
+  }
+}
+
+.links {
+  display: flex;
+  margin-right: -1rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .links {
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-bottom: 0.2rem;
+  }
+}
+
+.linksLabel {
+  display: none;
+  font-family: var(--font-neue-mon);
+  font-size: 1rem;
+  line-height: 160%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .linksLabel {
+    display: block;
+  }
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-right: 3.3rem;
+  font-family: var(--font-neue-mon);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2.5;
+  letter-spacing: 0.07em;
+  color: var(--white);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: calc(100% - 2rem);
+  height: 1px;
+  background: var(--white);
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 150ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@media (hover: hover) {
+  .link:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform 150ms cubic-bezier(0.155, 0.055, 0.14, 1);
+  }
+}
+
+.linkComingSoon {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .link {
+    font-size: 1.3rem;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0;
+    margin: 0.5rem 0 0;
+  }
+
+  .link::after {
+    bottom: -0.2rem;
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Subscribe form
+   ------------------------------------------------------------------------- */
+
+.subscribeWrap {
+  width: 58rem;
+  max-width: 100%;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .subscribeWrap {
+    width: 100%;
+    background: var(--black);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2.4rem 0 1rem;
+    margin-top: 2.1rem;
+  }
+}
+
+.subscribeForm {
+  position: relative;
+  height: 6rem;
+  width: 100%;
+  border-radius: 3rem;
+  background: var(--black);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .subscribeForm {
+    height: 4.5rem;
+    margin-left: -0.5rem;
+    width: calc(100% + 1rem);
+  }
+}
+
+.subscribeInput {
+  flex: 1;
+  height: 100%;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 3.1rem;
+  font-family: var(--font-neue-mon);
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  color: var(--white);
+}
+
+.subscribeInput::placeholder {
+  color: var(--white);
+  opacity: 0.5;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .subscribeInput {
+    font-size: 1.4rem;
+    padding-left: 2.2rem;
+  }
+}
+
+.subscribeButtonWrap {
+  position: relative;
+  flex-shrink: 0;
+  height: 4.8rem;
+  width: 13rem;
+  border-radius: 2.4rem;
+  margin-right: 0.6rem;
+  background: var(--hero-cream);
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@media (hover: hover) {
+  .subscribeButtonWrap:hover {
+    background: #ff7a00;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .subscribeButtonWrap {
+    height: 3.5rem;
+    width: 9.4rem;
+  }
+}
+
+.subscribeButton {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: none;
+  border-radius: 2.4rem;
+  font-family: var(--font-neue-mon);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------
+   Social links + copyright
+   ------------------------------------------------------------------------- */
+
+.social {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 3.3rem;
+  padding: 1rem 7.9rem 1rem 6.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .social {
+    justify-content: space-around;
+    gap: 0;
+    padding: 1.7rem 0 1.7rem;
+  }
+}
+
+.socialLink {
+  font-family: var(--font-neue-mon);
+  font-size: 1rem;
+  line-height: 160%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+@media (hover: hover) {
+  .socialLink:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.copyright {
+  margin-left: auto;
+  font-family: var(--font-neue-mon);
+  font-size: 1rem;
+  line-height: 160%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .copyright {
+    display: none;
+  }
+}
