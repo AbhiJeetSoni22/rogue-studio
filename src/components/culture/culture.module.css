@@ -1,0 +1,435 @@
+/* ==========================================================================
+CULTURE / SERVICES
+========================================================================== */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  background: #e9e4d9;
+  color: var(--black);
+  text-align: center;
+  padding: 8rem 5rem 10rem;
+}
+
+.top {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 5rem;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: var(--font-neue-mon);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 6.2rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.heading > span {
+  display: block;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+
+/* ==========================================================================
+ROWS
+========================================================================== */
+
+.rows {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.row {
+  position: relative;
+
+  min-height: 27rem;
+
+  padding: 2rem 0 3.5rem;
+
+  overflow: visible;
+}
+
+.divider {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: rgba(0, 0, 0, 0.14);
+
+  transform-origin: left center;
+}
+
+
+/* ==========================================================================
+DESKTOP ROW COMPOSITION
+========================================================================== */
+
+.marqueeTrack {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 22.5rem;
+
+  overflow: visible;
+}
+
+
+/* ==========================================================================
+IMAGES
+========================================================================== */
+
+.imageWrap {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  width: 23rem;
+  height: 22.5rem;
+
+  overflow: hidden;
+
+  border-radius: 1rem;
+
+  background: #e9e4d9;
+
+  will-change: transform;
+}
+
+.image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: inherit;
+
+  will-change: transform;
+}
+
+
+/* ==========================================================================
+CURTAIN
+========================================================================== */
+
+.curtain {
+  position: absolute;
+
+  top: -1%;
+
+  width: 52%;
+  height: 102%;
+
+  background: #e9e4d9;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  will-change: transform;
+}
+
+.curtainLeft {
+  left: -1%;
+  transform-origin: left center;
+}
+
+.curtainRight {
+  right: -1%;
+  transform-origin: right center;
+}
+
+
+/* ==========================================================================
+GIANT WORD
+========================================================================== */
+/* ==========================================================================
+GIANT WORD
+========================================================================== */
+
+.word {
+  position: relative;
+  z-index: 3;
+  flex: 1; /* Space balanced rakhne ke liye */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -1rem; /* Fixed negative margin reduced */
+  overflow: visible;
+  white-space: nowrap;
+  font-weight: 800;
+}
+
+.wordText {
+  display: inline-block;
+  font-family: var(--font-druk), Impact, sans-serif;
+  
+  /* Font size ko screen width ke hisab se responsive banaya hai */
+  font-size: clamp(5rem, 12vw, 16rem); 
+  
+  line-height: 0.85;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+  color: var(--hero-cream, #c8c2b5);
+  opacity: 0.8;
+  white-space: nowrap;
+  transform: translateY(0.04em);
+  will-change: transform;
+}
+.letterMask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+
+/* ==========================================================================
+ROW-SPECIFIC COMPOSITION
+========================================================================== */
+
+/*
+Branding:
+
+IMAGE     BRANDING     IMAGE
+*/
+
+.branding .word {
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+
+
+/*
+Digital / Design:
+
+DIGITAL     IMAGE     DESIGN
+*/
+
+.digital-design .word:first-child {
+  margin-right: -2rem;
+}
+
+.digital-design .word:last-child {
+  margin-left: -2rem;
+}
+
+
+/*
+Storytelling:
+
+IMAGE     STORYTELLING     IMAGE
+*/
+
+.storytelling .word {
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+
+/* ==========================================================================
+BOTTOM
+========================================================================== */
+
+.bottom {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 3rem;
+}
+
+.bottomCol {
+  text-align: left;
+}
+
+.bottom .bottomCol:last-child {
+  text-align: right;
+}
+
+.smallUpper {
+  display: block;
+
+  font-family: var(--font-neue-mon);
+  font-size: 1rem;
+  line-height: 160%;
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+.swearLine {
+  display: block;
+
+  font-family: var(--font-swear-display);
+
+  font-weight: 400;
+  font-size: 1.5rem;
+
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+MOBILE
+========================================================================== */
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+
+  .section {
+    padding: 4rem 0 8rem;
+  }
+
+  .top {
+    padding: 0 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+    line-height: 1.05;
+  }
+
+  .row {
+    min-height: 12rem;
+
+    padding: 1.6rem 0 2.4rem;
+
+    overflow: hidden;
+  }
+
+  .marqueeTrack {
+    width: max-content;
+
+    min-height: 10.7rem;
+
+    justify-content: flex-start;
+
+    gap: 2.5rem;
+
+    animation: marquee 22s linear infinite;
+  }
+
+  .row:nth-child(even) .marqueeTrack {
+    animation-direction: reverse;
+  }
+
+  .imageWrap {
+    width: 12rem;
+    min-width: 12rem;
+
+    height: 10.7rem;
+
+    border-radius: 0.5rem;
+  }
+
+  .word {
+    margin: 0;
+  }
+
+  .wordText {
+    font-size: 9.5rem;
+
+    line-height: 0.75;
+  }
+
+  .bottom {
+    padding: 0 2.4rem;
+
+    margin-top: 1.5rem;
+  }
+
+  .smallUpper {
+    font-size: 0.7rem;
+  }
+
+  .swearLine {
+    font-size: 1.2rem;
+  }
+
+  .bottom::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 1.25rem;
+    height: 1.25rem;
+
+    background-image: url("/images/gold_star.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform: translate3d(-50%, 1rem, 0);
+  }
+}
+
+
+/* ==========================================================================
+MOBILE MARQUEE
+========================================================================== */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* ==========================================================================
+REDUCED MOTION
+========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none !important;
+  }
+
+  .letter {
+    transform: none !important;
+  }
+
+  .curtain {
+    display: none;
+  }
+}
