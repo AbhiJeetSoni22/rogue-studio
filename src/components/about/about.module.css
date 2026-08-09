@@ -1,0 +1,457 @@
+/* ==========================================================================
+   ABOUT / "Howdy, we're Rogue" — homeCulture (top + mid + slider only;
+   the "Culture" snippets subsection further down the original page is a
+   later phase and intentionally not implemented here).
+
+   Values below are reverse-engineered directly from the original
+   style.min.css (.homeCulture* rules), reusing this project's existing
+   rem-scaling system, color tokens and font stacks (see globals.css).
+   ========================================================================== */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  background: #e9e4d9;
+  color: var(--black);
+  padding: 26rem 0 26rem 5rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .section {
+    padding: 18rem 1.5rem 16rem 1.5rem;
+  }
+}
+
+/* Soft background glow behind the globe — desktop only. */
+.glow {
+  position: absolute;
+  display: block;
+  width: 40.7rem;
+  height: 40.4rem;
+  left: 125rem;
+  top: 30rem;
+  border-radius: 100%;
+  background: var(--hero-cream);
+  opacity: 0.6;
+  filter: blur(14.6rem);
+  pointer-events: none;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .glow {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Top — "Howdy, we're Rogue" label + editorial statement + globe
+   ------------------------------------------------------------------------- */
+
+.top {
+  position: relative;
+  margin-bottom: 8rem;
+  width: 140rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .top {
+    margin-bottom: 3.8rem;
+    width: 100%;
+  }
+}
+
+.sectionHeader {
+  display: block;
+  margin-bottom: 3rem;
+  font-family: var(--font-neue-mon);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 160%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+  opacity: 0.5;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .sectionHeader {
+    margin-bottom: 2rem;
+  }
+}
+
+.heading {
+  position: relative;
+  font-family: var(--font-neue-mon);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.headingMobile {
+  display: none;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .heading {
+    display: none;
+  }
+
+  .headingMobile {
+    display: block;
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-neue-mon);
+    font-style: normal;
+    font-weight: 300;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+}
+
+.headingLine {
+  display: block;
+}
+
+/* "through design, tech," accent — swear-display */
+.swear {
+  font-family: var(--font-swear-display);
+  font-weight: 400;
+  font-size: 13.5rem;
+  line-height: 0.87;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .swear {
+    font-size: 5.9rem;
+    line-height: 0.87;
+    margin: -0.1em 0 0.1em;
+  }
+}
+
+/* "A LITTLE MAGIC" accent — swear-display-cilati (companion display face,
+   not yet sourced — see globals.css comment). Falls back to a bold serif
+   in the project cream color, matching the reference's own color. */
+.cilati {
+  font-family: var(--font-swear-cilati);
+  font-weight: 500;
+  font-size: 1.45em;
+  line-height: 0.5;
+  text-transform: none;
+  color: var(--hero-cream);
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .cilati {
+    font-size: 5.5rem;
+    line-height: 1;
+    margin: -0.2em 0 0.2em;
+  }
+}
+
+.globe {
+  position: absolute;
+  height: 55rem;
+  top: -5rem;
+  right: -9.6rem;
+  mix-blend-mode: difference;
+  opacity: 0.5;
+}
+
+.globe img {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .globe {
+    height: 25rem;
+    top: -3rem;
+    right: -6rem;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Mid — gold star + blurb + stats, paired with a video/image block
+   ------------------------------------------------------------------------- */
+
+.mid {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .mid {
+    display: block;
+    margin-bottom: 10.7rem;
+  }
+}
+
+.midContent {
+  position: relative;
+  width: 69rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .midContent {
+    width: 100%;
+  }
+}
+
+.star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .star {
+    height: 1.3rem;
+    top: 0.8rem;
+  }
+}
+
+.blurb {
+  width: 41.1rem;
+  margin-left: 28rem;
+  font-family: var(--font-neue-book);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.59;
+  letter-spacing: 0.03em;
+}
+
+.blurbSpacer {
+  display: none;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .blurb {
+    width: 100%;
+    margin-left: 0;
+    line-height: 2.2rem;
+  }
+
+  .blurbSpacer {
+    display: inline-block;
+    width: 3rem;
+  }
+}
+
+.blurb em {
+  font-style: normal;
+  font-family: var(--font-swear-cilati);
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  width: 55rem;
+  margin-top: 3rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .stats {
+    width: 100%;
+    /* Pushed below the absolutely-positioned mid image on mobile. */
+    margin-top: 40rem;
+  }
+}
+
+.stat {
+  min-width: 27.5rem;
+  max-width: 27.5rem;
+  margin-top: 7rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .stat {
+    min-width: 16.5rem;
+    max-width: 16.5rem;
+    margin-top: 5rem;
+  }
+}
+
+.statHeading {
+  width: 12rem;
+  margin-bottom: 1.7rem;
+  font-family: var(--font-neue-mon);
+  font-weight: 300;
+  font-size: 5rem;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .statHeading {
+    font-size: 3.9rem;
+    margin-bottom: 1.3rem;
+  }
+}
+
+.statText {
+  display: block;
+  width: 14rem;
+  font-family: var(--font-neue-book);
+  font-size: 1.5rem;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+}
+
+.stat:first-child .statText {
+  width: 13rem;
+}
+
+.midImage {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+  width: 81rem;
+  height: 62rem;
+  border-radius: 1.5rem;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .midImage {
+    position: absolute;
+    left: -1.6rem;
+    bottom: 31rem;
+    width: 36.1rem;
+    height: 34rem;
+    border-radius: 0 1rem 1rem 0;
+  }
+}
+
+.midImage iframe,
+.midImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  border: none;
+}
+
+/* -------------------------------------------------------------------------
+   Slider — horizontal editorial image strip, scroll-driven on desktop
+   ------------------------------------------------------------------------- */
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  margin: 27rem 0;
+  margin-left: -5rem;
+  width: calc(100% + 5rem);
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .slider {
+    margin: 8rem 0;
+    margin-left: -1.5rem;
+    width: calc(100% + 3rem);
+    height: 35rem;
+    /* Simple native horizontal swipe on mobile rather than the desktop
+       scroll-linked track — see AboutSection.tsx. */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.sliderTrack {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .sliderTrack {
+    height: 100%;
+  }
+}
+
+.sliderImage {
+  position: relative;
+  flex: none;
+  margin-right: 7.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.sliderImage:nth-child(odd) {
+  width: 40rem;
+  height: 30rem;
+}
+
+.sliderImage:nth-child(even) {
+  width: 34rem;
+  height: 46rem;
+}
+
+.sliderImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .sliderImage {
+    margin-right: 2rem;
+    width: 25rem;
+    min-width: 25rem;
+    max-width: 25rem;
+    height: 30rem;
+  }
+
+  .sliderImage:nth-child(odd) {
+    width: 25rem;
+    height: 30rem;
+  }
+
+  .sliderImage:nth-child(even) {
+    width: 25rem;
+    height: 30rem;
+  }
+
+  .sliderImage img {
+    object-fit: cover;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sliderTrack {
+    transform: none !important;
+  }
+}

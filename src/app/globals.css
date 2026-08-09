@@ -79,6 +79,12 @@
   --font-druk: "druk", "Arial Narrow", "Haettenschweiler", sans-serif;
   --font-neue-mon: "neue-mon", sans-serif;
   --font-neue-book: "neue-book", sans-serif;
+  /* Accent face used for "A LITTLE MAGIC" / the "playfulness" callout in
+     the About section — a companion display font to swear-display in
+     the reference, not present in the reference stylesheet either (same
+     situation as swear-display itself). No file available yet, so this
+     falls back cleanly rather than substituting an unrelated font. */
+  --font-swear-cilati: "swear-display-cilati", serif;
 }
 
 /* ==========================================================================
