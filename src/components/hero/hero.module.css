@@ -1,0 +1,335 @@
+/* ==========================================================================
+   HERO — static foundation (Phase 1)
+
+   Values below are reverse-engineered directly from the original
+   style.min.css (.homeHeader* rules). Entrance/parallax animation states
+   (.in / :not(.in), pal-moveX/Y, transitions) are intentionally NOT
+   implemented yet — this file only establishes the resting/final layout.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 90rem;
+  height: 101vh;
+  background: var(--black);
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .hero {
+    height: 84rem;
+    max-height: 100vh;
+    min-height: 70rem;
+    overflow: hidden;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Centered heading + bottom info block
+   ------------------------------------------------------------------------- */
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 108rem;
+  transform: translate3d(-50%, -50%, 0);
+  text-align: center;
+}
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .center {
+    width: 100%;
+    transform: translate3d(-50%, -60%, 0);
+  }
+}
+
+.heading {
+  font-family: var(--font-swear-display);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13.5rem;
+  line-height: 81.5%;
+  text-transform: uppercase;
+  margin-top: -0.1em;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .heading {
+    font-size: 5.3rem;
+  }
+}
+
+.heading em {
+  font-style: italic;
+}
+
+.line {
+  display: block;
+}
+
+.druk {
+  font-family: var(--font-druk);
+  font-style: normal;
+  font-size: 24rem;
+  line-height: 77.5%;
+  letter-spacing: -2;
+  text-transform: uppercase;
+  color: var(--hero-cream);
+  font-stretch: condensed;
+  white-space: nowrap;
+  font-weight: 800;
+}
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .druk {
+    font-size: 8.8rem;
+  }
+}
+
+.bottom {
+  position: relative;
+  width: 100%;
+  margin-top: 9rem;
+  padding: 0 5rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.bottom > * {
+  margin: 0 9rem;
+}
+
+.bottom::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.1rem;
+  height: 1.1rem;
+  transform: translate3d(-50%, -50%, 0);
+  background-image: url("/images/gold_star.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .bottom {
+    margin-top: 3.5rem;
+    padding: 0;
+  }
+
+  .bottom > * {
+    margin: 0 5rem;
+  }
+}
+
+.smallUpper {
+  display: block;
+  font-family: var(--font-neue-mon);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 160%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .smallUpper {
+    font-size: 0.7rem;
+  }
+}
+
+.swearLine {
+  display: block;
+  font-family: var(--font-swear-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .swearLine {
+    font-size: 1.2rem;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Floating hero images
+   ------------------------------------------------------------------------- */
+
+.images {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 101rem;
+  transform: translateY(-50%);
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .images {
+    top: 50%;
+    height: 67rem;
+    transform: translateY(-57%);
+  }
+}
+
+.imagesInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .imagesInner {
+    transform: translateX(21vw);
+  }
+}
+
+.imageWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  position: absolute;
+}
+
+/*
+ * Parallax layer: sits between the entrance-animation wrapper (.image)
+ * and the <img>. Framer Motion drives its x/y via motion values (mouse +
+ * scroll parallax) independently of the entrance x/y/rotate above, so
+ * the two animations compose without fighting over the same transform.
+ * will-change hints the browser this element animates continuously
+ * while parallax is active; it costs nothing when static.
+ */
+.imageParallax {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Desktop positions (imageWrap order matches original DOM order) */
+.imageWrap:nth-child(1) .image {
+  width: 34rem;
+  height: 34rem;
+  top: 33rem;
+  left: 62.5rem;
+  transform: rotate(-5deg);
+}
+
+.imageWrap:nth-child(2) .image {
+  width: 15rem;
+  height: 15rem;
+  top: 38rem;
+  left: 141rem;
+}
+
+.imageWrap:nth-child(3) .image {
+  width: 22rem;
+  height: 22rem;
+  top: 84rem;
+  left: 20rem;
+}
+
+.imageWrap:nth-child(4) .image {
+  width: 32rem;
+  height: 32rem;
+  top: 65rem;
+  left: 135rem;
+}
+
+.imageWrap:nth-child(5) .image {
+  width: 14rem;
+  height: 14rem;
+  top: 4rem;
+  left: 130rem;
+}
+
+.imageWrap:nth-child(6) .image {
+  width: 12rem;
+  height: 12rem;
+  top: 9rem;
+  left: 33.5rem;
+}
+
+.imageWrap:nth-child(7) .image {
+  width: 27rem;
+  height: 27rem;
+  top: 25rem;
+  left: -5rem;
+}
+
+/* Mobile / portrait positions */
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .imageWrap:nth-child(1) .image {
+    width: 14rem;
+    height: 14rem;
+    top: 26rem;
+    left: 11rem;
+    transform: rotate(-5deg);
+  }
+
+  .imageWrap:nth-child(2) .image {
+    width: 10rem;
+    height: 10rem;
+    top: 20rem;
+    left: 40rem;
+  }
+
+  .imageWrap:nth-child(3) .image {
+    width: 10rem;
+    height: 10rem;
+    top: 57rem;
+    left: 1rem;
+  }
+
+  .imageWrap:nth-child(4) .image {
+    width: 17rem;
+    height: 17rem;
+    top: 52rem;
+    left: 23rem;
+  }
+
+  .imageWrap:nth-child(5) .image {
+    width: 7rem;
+    height: 7rem;
+    top: 11rem;
+    left: 29rem;
+  }
+
+  .imageWrap:nth-child(6) .image {
+    width: 6rem;
+    height: 6rem;
+    top: 4rem;
+    left: 15rem;
+  }
+
+  .imageWrap:nth-child(7) .image {
+    width: 12rem;
+    height: 12rem;
+    top: 10rem;
+    left: -6.5rem;
+  }
+}

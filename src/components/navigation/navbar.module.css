@@ -1,0 +1,54 @@
+/*
+  Basic Navbar placeholder foundation.
+
+  The original reference site injects its nav markup at runtime via
+  `<div data-global="nav">` (client-side), so no static nav DOM/CSS exists
+  in the source to reverse-engineer directly. Positioning below is a
+  reasonable approximation consistent with the Hero's dark background and
+  rem scale, to be replaced with the full animated nav/menu in a later
+  phase.
+*/
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 5rem;
+  background: transparent;
+  pointer-events: none;
+}
+
+.navbar > * {
+  pointer-events: auto;
+}
+
+.logo {
+  font-family: var(--font-neue-mon);
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.menuTrigger {
+  font-family: var(--font-neue-mon);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (orientation: portrait) and (max-width: 800px),
+  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
+  .navbar {
+    padding: 2rem 2.5rem;
+  }
+}
