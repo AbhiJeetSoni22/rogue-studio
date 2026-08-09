@@ -1,0 +1,317 @@
+/* ==========================================================================
+SIDEBAR PANEL & LAYOUT
+========================================================================== */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  left: 4.5rem; /* Rail Bar ke theek aage */
+  bottom: 0;
+  width: min(680px, calc(100vw - 4.5rem)); /* Width badhai gayi hai */
+  background: #e9e4d9;
+  color: #111111;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Content ko top, middle aur bottom me properly distribute karega */
+  padding: 4rem 3.5rem 2.5rem;
+  box-shadow: 20px 0 50px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+}
+
+.closeButton {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeIcon {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.closeIcon::before,
+.closeIcon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #111;
+}
+
+.closeIcon::before {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.closeIcon::after {
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+
+/* ==========================================================================
+NAVIGATION MENU ITEMS (GIANT MARQUEE TICKER)
+========================================================================== */
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.navRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #111;
+  padding: 1.25rem 0; /* Vertical height badhai gayi hai */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.navRowDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.navIndex {
+  font-family: var(--font-neue-mon, monospace);
+  font-size: 0.95rem;
+  margin-right: 1.5rem;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.navSoon {
+  font-size: 0.8rem;
+  margin-left: auto;
+  color: #888;
+  font-family: var(--font-neue-mon, monospace);
+  flex-shrink: 0;
+}
+
+.marqueeViewport {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+}
+
+.marqueeTrack {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeLoop 12s linear infinite;
+  will-change: transform;
+}
+
+.marqueeUnit {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+/* Typography size badhaya gaya hai (2.8rem -> 4.8rem) */
+.marqueeUpper {
+  font-family: var(--font-druk, sans-serif);
+  font-size: 4.8rem; 
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.marqueeStyled {
+  font-family: var(--font-swear-display, Georgia, serif);
+  font-style: italic;
+  font-size: 4.8rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.marqueeMark {
+  font-size: 1.8rem;
+  color: #888;
+  margin: 0 0.4rem;
+}
+
+@keyframes marqueeLoop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* ==========================================================================
+CONTACT & EMAIL SUBSCRIBE SECTION
+========================================================================== */
+
+.contact {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactLabel {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #777;
+  font-family: var(--font-neue-mon, monospace);
+  font-weight: 500;
+}
+
+/* Email ID size badhaya gaya hai */
+.contactEmail {
+  font-size: 2.2rem; 
+  font-weight: 400;
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  font-family: var(--font-neue-mon, monospace);
+  transition: opacity 0.2s;
+}
+
+.contactEmail:hover {
+  opacity: 0.7;
+}
+
+/* Input Form Box Badhaya Gaya Hai */
+.subscribeForm {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 3rem;
+  padding: 0.6rem 0.6rem 0.6rem 1.5rem;
+  margin-top: 1rem;
+  gap: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.subscribeLabel {
+  font-size: 1rem;
+  white-space: nowrap;
+  color: #111;
+  font-weight: 500;
+}
+
+.subscribeInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  width: 100%;
+  color: #111;
+}
+
+.subscribeButton {
+  border: none;
+  background: #baa282; /* Gold/Accent button color */
+  color: #111111;
+  padding: 0.85rem 1.6rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.subscribeButton:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
+FOOTER SOCIAL LINKS
+========================================================================== */
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 1.8rem;
+}
+
+.social {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.socialLink {
+  color: #111;
+  text-decoration: none;
+  font-family: var(--font-neue-mon, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.socialLink:hover {
+  opacity: 0.6;
+}
+
+.copyright {
+  color: #777;
+  font-family: var(--font-neue-mon, monospace);
+  font-size: 0.8rem;
+}
+
+
+/* ==========================================================================
+MOBILE RESPONSIVE
+========================================================================== */
+
+@media (max-width: 800px) {
+  .panel {
+    left: 3.5rem;
+    width: calc(100vw - 3.5rem);
+    padding: 2.5rem 1.5rem 1.5rem;
+  }
+
+  .marqueeUpper,
+  .marqueeStyled {
+    font-size: 2.8rem;
+  }
+
+  .contactEmail {
+    font-size: 1.4rem;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}

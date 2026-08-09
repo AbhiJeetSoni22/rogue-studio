@@ -1,54 +1,147 @@
-/*
-  Basic Navbar placeholder foundation.
-
-  The original reference site injects its nav markup at runtime via
-  `<div data-global="nav">` (client-side), so no static nav DOM/CSS exists
-  in the source to reverse-engineer directly. Positioning below is a
-  reasonable approximation consistent with the Hero's dark background and
-  rem scale, to be replaced with the full animated nav/menu in a later
-  phase.
-*/
-
-.navbar {
+/* Permanent Vertical Black Bar on Left */
+.rail {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  z-index: 50;
+  bottom: 0;
+  width: 4.5rem;
+  background: #000000;
+  color: #ffffff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.railTop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 3rem 5rem;
-  background: transparent;
-  pointer-events: none;
+  justify-content: center;
 }
 
-.navbar > * {
-  pointer-events: auto;
+.logoLink {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
 }
 
-.logo {
-  font-family: var(--font-neue-mon);
-  font-size: 1.2rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--white);
+.logoLink:hover {
+  opacity: 0.8;
 }
 
+.logoIcon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* Vertical 3-Dot Menu Button */
 .menuTrigger {
-  font-family: var(--font-neue-mon);
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: none;
+  width: 2.8rem;
+  height: 2.8rem;
+  background: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.155, 0.055, 0.14, 1);
 }
 
-@media screen and (orientation: portrait) and (max-width: 800px),
-  screen and (orientation: landscape) and (max-width: 1200px) and (max-height: 600px) {
-  .navbar {
-    padding: 2rem 2.5rem;
+.menuTrigger:hover {
+  transform: scale(1.1);
+}
+
+.menuDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.155, 0.055, 0.14, 1);
+}
+
+.menuDotExtra {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.155, 0.055, 0.14, 1);
+}
+
+/* Transformed State when Open (Reference Screenshot 2) */
+.menuTrigger[data-open="true"] {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.menuTrigger[data-open="true"] .menuDot:nth-child(1) {
+  transform: translateY(-3px) translateX(-3px);
+}
+
+.menuTrigger[data-open="true"] .menuDot:nth-child(2) {
+  transform: translateY(-3px) translateX(3px);
+}
+
+.menuTrigger[data-open="true"] .menuDot:nth-child(3) {
+  transform: translateY(3px) translateX(-3px);
+}
+
+.menuTrigger[data-open="true"] .menuDotExtra {
+  opacity: 1;
+  transform: translateY(3px) translateX(3px);
+}
+
+.railBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vertical Text "• START A PROJECT" */
+.startProject {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #ffffff;
+  font-family: var(--font-neue-mon, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.startProject:hover {
+  opacity: 0.7;
+}
+
+.bullet {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 800px) {
+  .rail {
+    width: 3.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .logoIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .startProject {
+    font-size: 0.65rem;
   }
 }

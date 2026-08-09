@@ -19,7 +19,15 @@
      Source the actual "Swear Display" font file separately and add its
      @font-face here. A serif fallback is used until then.
    ========================================================================== */
+main {
+  padding-left: 4.5rem;
+}
 
+@media (max-width: 800px) {
+  main {
+    padding-left: 3.5rem;
+  }
+}
 @font-face {
   font-family: "druk";
   src: url("/fonts/Druk/Druk-CondSuper.otf") format("opentype");
